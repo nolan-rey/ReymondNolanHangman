@@ -1,0 +1,130 @@
+﻿<Window x:Class="ReymondNolanHangman.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReymondNolanHangman"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="650">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Title-->
+        <Grid Grid.Row="0">
+            <Label Content="Hangman"/>
+
+            <Grid.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                </Style>
+            </Grid.Resources>
+        </Grid>
+        
+        <!--Jeux-->
+        <Grid Grid.Row="1">
+            <!--img-->
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="grdi_Image" Grid.Column="0">
+                    
+                </Grid>
+            
+            <!--Alphabet-->
+            <Grid x:Name="grdi_Keypad" Grid.Column="1">
+             
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Margin" Value="1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                        
+                        <Style.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+                </Grid.Resources>
+
+                <!--Button-->
+                <Button Grid.Row="0" Grid.Column="0" Name="Key_A" Content="A"/>
+                <Button Grid.Row="0" Grid.Column="1" Name="Key_B" Content="B"/>
+                <Button Grid.Row="0" Grid.Column="2" Name="Key_C" Content="C"/>
+                <Button Grid.Row="0" Grid.Column="3" Name="Key_D" Content="D"/>
+                <Button Grid.Row="1" Grid.Column="0" Name="Key_E" Content="E"/>
+                <Button Grid.Row="1" Grid.Column="1" Name="Key_F" Content="F"/>
+                <Button Grid.Row="1" Grid.Column="2" Name="Key_G" Content="G"/>
+                <Button Grid.Row="1" Grid.Column="3" Name="Key_H" Content="H"/>
+                <Button Grid.Row="2" Grid.Column="0" Name="Key_I" Content="I"/>
+                <Button Grid.Row="2" Grid.Column="1" Name="Key_J" Content="J"/>
+                <Button Grid.Row="2" Grid.Column="2" Name="Key_K" Content="K"/>
+                <Button Grid.Row="2" Grid.Column="3" Name="Key_L" Content="L"/>
+                <Button Grid.Row="3" Grid.Column="0" Name="Key_M" Content="M"/>
+                <Button Grid.Row="3" Grid.Column="1" Name="Key_N" Content="N"/>
+                <Button Grid.Row="3" Grid.Column="2" Name="Key_O" Content="O"/>
+                <Button Grid.Row="3" Grid.Column="3" Name="Key_P" Content="P"/>
+                <Button Grid.Row="4" Grid.Column="0" Name="Key_Q" Content="Q"/>
+                <Button Grid.Row="4" Grid.Column="1" Name="Key_R" Content="R"/>
+                <Button Grid.Row="4" Grid.Column="2" Name="Key_S" Content="S"/>
+                <Button Grid.Row="4" Grid.Column="3" Name="Key_T" Content="T"/>
+                <Button Grid.Row="5" Grid.Column="0" Name="Key_U" Content="U"/>
+                <Button Grid.Row="5" Grid.Column="1" Name="Key_V" Content="V"/>
+                <Button Grid.Row="5" Grid.Column="2" Name="Key_W" Content="W"/>
+                <Button Grid.Row="5" Grid.Column="3" Name="Key_X" Content="X"/>
+                <Button Grid.Row="6" Grid.Column="1" Name="Key_Y" Content="Y"/>
+                <Button Grid.Row="6" Grid.Column="2" Name="Key_Z" Content="Z"/>
+            </Grid>
+            
+        </Grid>
+        
+        <!--TextBox-->
+        <Grid Grid.Row="2">
+            <TextBlock Grid.Row="3" Grid.Column="0" Name="TB_display"/>
+        </Grid>
+        
+        <!--Licence-->
+        <Grid Grid.Row="3">
+            <Label Content="Nolan REYMOND 2024" FontFamily="Arial"/>
+
+            <Grid.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                </Style>
+            </Grid.Resources>
+        </Grid>
+    </Grid>
+</Window>
