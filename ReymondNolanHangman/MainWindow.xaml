@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReymondNolanHangman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="650">
-    <Grid>
+        Title="MainWindow" Height="650" Width="650">
+    
+    <Grid Background="#4F6272">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
@@ -20,7 +21,7 @@
 
             <Grid.Resources>
                 <Style TargetType="{x:Type Label}">
-                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="FontSize" Value="35"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
                     <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
                     <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -43,13 +44,13 @@
             
             <!--Alphabet-->
             <Grid x:Name="grdi_Keypad" Grid.Column="1">
-             
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -64,10 +65,11 @@
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="FontSize" Value="20"/>
                         <Setter Property="Margin" Value="1"/>
+                        <Setter Property="Background" Value="#B7C3F3"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
                         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
                         <Setter Property="FontFamily" Value="Comic Sans MS"/>
-                        
+
                         <Style.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"/>
@@ -104,12 +106,25 @@
                 <Button Grid.Row="6" Grid.Column="1" Name="Key_Y" Content="Y"/>
                 <Button Grid.Row="6" Grid.Column="2" Name="Key_Z" Content="Z"/>
             </Grid>
-            
         </Grid>
         
         <!--TextBox-->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Background="#404E5C">
             <TextBlock Grid.Row="3" Grid.Column="0" Name="TB_display"/>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </Grid.Resources>
+            
         </Grid>
         
         <!--Licence-->
@@ -123,6 +138,7 @@
                     <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
                     <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
                     <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                    
                 </Style>
             </Grid.Resources>
         </Grid>
