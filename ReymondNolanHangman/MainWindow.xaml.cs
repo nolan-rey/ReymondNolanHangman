@@ -23,12 +23,21 @@ namespace ReymondNolanHangman
         public MainWindow()
         {
             InitializeComponent();
+           StartUpGame();
         }
 
         int vie = 5;
-        List<string> list = new List<string>() { "vache", "aigle", "bille", "canne", "coton" };
-        Random random = new Random();
-        string mot = random.Next(list.Length);
+        string GuessWord;
+
+        public void StartUpGame()
+        {
+            List<string> listWord = new List<string>() { "vache", "aigle", "bille", "canne", "coton" };
+
+            Random random = new Random();
+            int mot = random.Next(0,listWord.Count);
+            GuessWord = listWord[mot];
+        }
+
 
 
         private void BTN_Click(object sender, RoutedEventArgs e)
