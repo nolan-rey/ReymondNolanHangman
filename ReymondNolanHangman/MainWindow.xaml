@@ -79,32 +79,32 @@
                 </Grid.Resources>
 
                 <!--Button-->
-                <Button Grid.Row="0" Grid.Column="0" Name="Key_A" Content="A"/>
-                <Button Grid.Row="0" Grid.Column="1" Name="Key_B" Content="B"/>
-                <Button Grid.Row="0" Grid.Column="2" Name="Key_C" Content="C"/>
-                <Button Grid.Row="0" Grid.Column="3" Name="Key_D" Content="D"/>
-                <Button Grid.Row="1" Grid.Column="0" Name="Key_E" Content="E"/>
-                <Button Grid.Row="1" Grid.Column="1" Name="Key_F" Content="F"/>
-                <Button Grid.Row="1" Grid.Column="2" Name="Key_G" Content="G"/>
-                <Button Grid.Row="1" Grid.Column="3" Name="Key_H" Content="H"/>
-                <Button Grid.Row="2" Grid.Column="0" Name="Key_I" Content="I"/>
-                <Button Grid.Row="2" Grid.Column="1" Name="Key_J" Content="J"/>
-                <Button Grid.Row="2" Grid.Column="2" Name="Key_K" Content="K"/>
-                <Button Grid.Row="2" Grid.Column="3" Name="Key_L" Content="L"/>
-                <Button Grid.Row="3" Grid.Column="0" Name="Key_M" Content="M"/>
-                <Button Grid.Row="3" Grid.Column="1" Name="Key_N" Content="N"/>
-                <Button Grid.Row="3" Grid.Column="2" Name="Key_O" Content="O"/>
-                <Button Grid.Row="3" Grid.Column="3" Name="Key_P" Content="P"/>
-                <Button Grid.Row="4" Grid.Column="0" Name="Key_Q" Content="Q"/>
-                <Button Grid.Row="4" Grid.Column="1" Name="Key_R" Content="R"/>
-                <Button Grid.Row="4" Grid.Column="2" Name="Key_S" Content="S"/>
-                <Button Grid.Row="4" Grid.Column="3" Name="Key_T" Content="T"/>
-                <Button Grid.Row="5" Grid.Column="0" Name="Key_U" Content="U"/>
-                <Button Grid.Row="5" Grid.Column="1" Name="Key_V" Content="V"/>
-                <Button Grid.Row="5" Grid.Column="2" Name="Key_W" Content="W"/>
-                <Button Grid.Row="5" Grid.Column="3" Name="Key_X" Content="X"/>
-                <Button Grid.Row="6" Grid.Column="1" Name="Key_Y" Content="Y"/>
-                <Button Grid.Row="6" Grid.Column="2" Name="Key_Z" Content="Z"/>
+                <Button Grid.Row="0" Grid.Column="0" Name="Key_A" Content="A" Click="BTN_Click"/>
+                <Button Grid.Row="0" Grid.Column="1" Name="Key_B" Content="B" Click="BTN_Click"/>
+                <Button Grid.Row="0" Grid.Column="2" Name="Key_C" Content="C" Click="BTN_Click"/>
+                <Button Grid.Row="0" Grid.Column="3" Name="Key_D" Content="D" Click="BTN_Click"/>
+                <Button Grid.Row="1" Grid.Column="0" Name="Key_E" Content="E" Click="BTN_Click"/>
+                <Button Grid.Row="1" Grid.Column="1" Name="Key_F" Content="F" Click="BTN_Click"/>
+                <Button Grid.Row="1" Grid.Column="2" Name="Key_G" Content="G" Click="BTN_Click"/>
+                <Button Grid.Row="1" Grid.Column="3" Name="Key_H" Content="H" Click="BTN_Click"/>
+                <Button Grid.Row="2" Grid.Column="0" Name="Key_I" Content="I" Click="BTN_Click"/>
+                <Button Grid.Row="2" Grid.Column="1" Name="Key_J" Content="J" Click="BTN_Click"/>
+                <Button Grid.Row="2" Grid.Column="2" Name="Key_K" Content="K" Click="BTN_Click"/>
+                <Button Grid.Row="2" Grid.Column="3" Name="Key_L" Content="L" Click="BTN_Click"/>
+                <Button Grid.Row="3" Grid.Column="0" Name="Key_M" Content="M" Click="BTN_Click"/>
+                <Button Grid.Row="3" Grid.Column="1" Name="Key_N" Content="N" Click="BTN_Click"/>
+                <Button Grid.Row="3" Grid.Column="2" Name="Key_O" Content="O" Click="BTN_Click"/>
+                <Button Grid.Row="3" Grid.Column="3" Name="Key_P" Content="P" Click="BTN_Click"/>
+                <Button Grid.Row="4" Grid.Column="0" Name="Key_Q" Content="Q" Click="BTN_Click"/>
+                <Button Grid.Row="4" Grid.Column="1" Name="Key_R" Content="R" Click="BTN_Click"/>
+                <Button Grid.Row="4" Grid.Column="2" Name="Key_S" Content="S" Click="BTN_Click"/>
+                <Button Grid.Row="4" Grid.Column="3" Name="Key_T" Content="T" Click="BTN_Click"/>
+                <Button Grid.Row="5" Grid.Column="0" Name="Key_U" Content="U" Click="BTN_Click"/>
+                <Button Grid.Row="5" Grid.Column="1" Name="Key_V" Content="V" Click="BTN_Click"/>
+                <Button Grid.Row="5" Grid.Column="2" Name="Key_W" Content="W" Click="BTN_Click"/>
+                <Button Grid.Row="5" Grid.Column="3" Name="Key_X" Content="X" Click="BTN_Click"/>
+                <Button Grid.Row="6" Grid.Column="1" Name="Key_Y" Content="Y" Click="BTN_Click"/>
+                <Button Grid.Row="6" Grid.Column="2" Name="Key_Z" Content="Z" Click="BTN_Click"/>
             </Grid>
         </Grid>
         

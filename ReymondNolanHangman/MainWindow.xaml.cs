@@ -25,5 +25,17 @@ namespace ReymondNolanHangman
             InitializeComponent();
         }
 
+        int vie = 5;
+        List<string> list = new List<string>() { "vache", "aigle", "bille", "canne", "coton" };
+        Random random = new Random();
+        string mot = random.Next(list.Length);
+
+
+        private void BTN_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            String btnContent = btn.Content.ToString();
+            btn.IsEnabled = false;
+        }
     }
 }
