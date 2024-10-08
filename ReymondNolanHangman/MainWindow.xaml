@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReymondNolanHangman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="650">
+        Title="MainWindow" Height="650" Width="650" Loaded="Windows_Loaded">
     
     <Grid Background="#4F6272">
         <Grid.RowDefinitions>
@@ -39,8 +39,8 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid x:Name="grdi_Image" Grid.Column="0">
-                    
-                </Grid>
+                <TextBlock Grid.Row="1" Grid.Column="0" Name="TB_display_Vie" FontSize="25"/>
+            </Grid>
             
             <!--Alphabet-->
             <Grid x:Name="grdi_Keypad" Grid.Column="1">
@@ -110,7 +110,7 @@
         
         <!--TextBox-->
         <Grid Grid.Row="2" Background="#404E5C">
-            <TextBlock Grid.Row="3" Grid.Column="0" Name="TB_display"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Name="TB_display" FontSize="50"/>
             <Grid.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="15"/>

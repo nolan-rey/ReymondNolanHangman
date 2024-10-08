@@ -28,6 +28,8 @@ namespace ReymondNolanHangman
 
         int vie = 5;
         string GuessWord;
+        char[] wordDisplay;
+
 
         public void StartUpGame()
         {
@@ -36,15 +38,51 @@ namespace ReymondNolanHangman
             Random random = new Random();
             int mot = random.Next(0,listWord.Count);
             GuessWord = listWord[mot];
+            wordDisplay = new string('*', GuessWord.Length).ToCharArray();
+            UpdateMotAffiche();
+            TB_display_Vie.Text = "vie : " + vie.ToString();
         }
 
-
+        public void Windows_Loaded(object sender, RoutedEventArgs e)
+        {
+            StartUpGame();
+        }
 
         private void BTN_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
             String btnContent = btn.Content.ToString();
             btn.IsEnabled = false;
+
+            if (GuessWord.Contains(btnContent))
+            {
+                for (int i = 0; i < GuessWord.Length; i++)
+                {
+                    if (GuessWord[i].ToString() == btnContent)
+                    {
+                        wordDisplay[i] = GuessWord[i];
+                    }
+                }
+            }
+            else {
+                vie--;
+                if (vie == 0) { 
+                    StartUpGame();
+                    return;
+                }
+            }
+           UpdateMotAffiche() ;
+            if (new string(wordDisplay) == GuessWord)
+            {
+                MessageBox.Show("gagné");
+                StartUpGame() ;
+            }
         }
+
+        private void UpdateMotAffiche()
+        {
+            TB_display.Text = new string(wordDisplay);
+        }
+
     }
 }
