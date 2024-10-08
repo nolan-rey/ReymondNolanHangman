@@ -33,6 +33,7 @@ namespace ReymondNolanHangman
 
         public void StartUpGame()
         {
+            vie = 5;
             List<string> listWord = new List<string>() { "vache", "aigle", "bille", "canne", "coton" };
 
             Random random = new Random();
@@ -41,6 +42,11 @@ namespace ReymondNolanHangman
             wordDisplay = new string('*', GuessWord.Length).ToCharArray();
             UpdateMotAffiche();
             TB_display_Vie.Text = "vie : " + vie.ToString();
+
+            foreach (Button btn in FindVisualChildren<Button>(this))
+            {
+                btn.IsEnabled = true;
+            }
         }
 
         public void Windows_Loaded(object sender, RoutedEventArgs e)
@@ -51,7 +57,7 @@ namespace ReymondNolanHangman
         private void BTN_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            String btnContent = btn.Content.ToString();
+            String btnContent = btn.Content.ToString().ToLower();
             btn.IsEnabled = false;
 
             if (GuessWord.Contains(btnContent))
@@ -66,7 +72,9 @@ namespace ReymondNolanHangman
             }
             else {
                 vie--;
-                if (vie == 0) { 
+                TB_display_Vie.Text = "vie : " + vie.ToString();
+                if (vie == 0) {
+                    MessageBox.Show("Perdu! Le mot était : " + GuessWord);
                     StartUpGame();
                     return;
                 }
@@ -74,7 +82,7 @@ namespace ReymondNolanHangman
            UpdateMotAffiche() ;
             if (new string(wordDisplay) == GuessWord)
             {
-                MessageBox.Show("gagné");
+                MessageBox.Show("Gagné");
                 StartUpGame() ;
             }
         }
@@ -84,5 +92,26 @@ namespace ReymondNolanHangman
             TB_display.Text = new string(wordDisplay);
         }
 
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
     }
 }
+
+    
