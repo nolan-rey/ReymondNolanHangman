@@ -18,6 +18,7 @@
         <!--Title-->
         <Grid Grid.Row="0">
             <Label Content="Hangman"/>
+            <TextBlock Name="TB_Timer" FontSize="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
 
             <Grid.Resources>
                 <Style TargetType="{x:Type Label}">
@@ -40,6 +41,7 @@
 
                 <Grid x:Name="grdi_Image" Grid.Column="0">
                 <TextBlock Grid.Row="1" Grid.Column="0" Name="TB_display_Vie" FontSize="35"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Name="TB_display_Score" FontSize="35" VerticalAlignment="Bottom"/>
                 <Image x:Name="Img_Pendu" HorizontalAlignment="Center" Height="500" VerticalAlignment="Center" Source="Ressource/Img/7.png"/>
             </Grid>
             

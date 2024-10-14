@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Windows.Threading;
 
 namespace ReymondNolanHangman
 {
@@ -23,6 +24,8 @@ namespace ReymondNolanHangman
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int timeLeft = 60;
+        private DispatcherTimer timer;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +33,7 @@ namespace ReymondNolanHangman
         }
 
         int vie = 7;
+        int score = 0;
         string GuessWord;
         char[] wordDisplay;
 
@@ -37,6 +41,7 @@ namespace ReymondNolanHangman
         public void StartUpGame()
         {
             vie = 7;
+            timeLeft = 60;
             List<string> listWord = File.ReadAllLines("../../Ressource/mot-Hangman.txt").ToList();
 
             Random random = new Random();
@@ -45,11 +50,35 @@ namespace ReymondNolanHangman
             wordDisplay = new string('_', GuessWord.Length).ToCharArray();
             UpdateMotAffiche();
             TB_display_Vie.Text = "vie : " + vie.ToString();
+            TB_display_Score.Text = "score : " + score.ToString();
             Uri ressource = new Uri("Ressource/Img/7.png", UriKind.Relative);
             Img_Pendu.Source = new BitmapImage(ressource);
             AllElementButton();
-            MediaPlayer playMedia = new MediaPlayer();
-            var uri = new Uri("Ressource/Sound/StartUpGame.mp3", UriKind.Relative);
+
+            if (timer != null)
+            {
+                timer.Stop();
+            }
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                timeLeft--;
+                TB_Timer.Text = "Temps restant : " + timeLeft.ToString() + "s";
+            }
+            if (timeLeft == 0)
+            {
+                MessageBox.Show("Perdu! Le mot était : " + GuessWord);
+                StartUpGame();
+                return;
+            }
         }
 
         public void Windows_Loaded(object sender, RoutedEventArgs e)
@@ -59,6 +88,10 @@ namespace ReymondNolanHangman
 
         private void BTN_Click(object sender, RoutedEventArgs e)
         {
+            MediaPlayer playMedia = new MediaPlayer();
+            var uri = new Uri("../../Ressource/sound-btn.mp3", UriKind.Relative);
+            playMedia.Open(uri);
+            playMedia.Play();
             Button btn = sender as Button;
             String btnContent = btn.Content.ToString().ToLower();
             btn.IsEnabled = false;
@@ -80,6 +113,7 @@ namespace ReymondNolanHangman
                 Uri ressource = new Uri("Ressource/Img/" + vie + ".png", UriKind.Relative);
                 Img_Pendu.Source = new BitmapImage(ressource);
                 if (vie == 0) {
+                    timer.Stop();
                     MessageBox.Show("Perdu! Le mot était : " + GuessWord);
                     StartUpGame();
                     return;
@@ -88,6 +122,8 @@ namespace ReymondNolanHangman
             UpdateMotAffiche();
             if (new string(wordDisplay) == GuessWord)
             {
+                timer.Stop();
+                score = score+1;
                 MessageBox.Show("Gagné");
                 StartUpGame();
             }
