@@ -39,7 +39,8 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid x:Name="grdi_Image" Grid.Column="0">
-                <TextBlock Grid.Row="1" Grid.Column="0" Name="TB_display_Vie" FontSize="25"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Name="TB_display_Vie" FontSize="35"/>
+                <Image x:Name="Img_Pendu" HorizontalAlignment="Center" Height="500" VerticalAlignment="Center" Source="Ressource/Img/7.png"/>
             </Grid>
             
             <!--Alphabet-->
@@ -110,7 +111,7 @@
         
         <!--TextBox-->
         <Grid Grid.Row="2" Background="#404E5C">
-            <TextBlock Grid.Row="3" Grid.Column="0" Name="TB_display" FontSize="50"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Name="TB_display" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <Grid.Resources>
                 <Style TargetType="{x:Type Label}">
                     <Setter Property="FontSize" Value="15"/>

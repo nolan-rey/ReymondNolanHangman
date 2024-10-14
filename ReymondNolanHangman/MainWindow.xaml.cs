@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ReymondNolanHangman.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace ReymondNolanHangman
 {
@@ -23,30 +26,30 @@ namespace ReymondNolanHangman
         public MainWindow()
         {
             InitializeComponent();
-           StartUpGame();
+            StartUpGame();
         }
 
-        int vie = 5;
+        int vie = 7;
         string GuessWord;
         char[] wordDisplay;
 
 
         public void StartUpGame()
         {
-            vie = 5;
-            List<string> listWord = new List<string>() { "vache", "aigle", "bille", "canne", "coton" };
+            vie = 7;
+            List<string> listWord = File.ReadAllLines("../../Ressource/mot-Hangman.txt").ToList();
 
             Random random = new Random();
-            int mot = random.Next(0,listWord.Count);
+            int mot = random.Next(0, listWord.Count);
             GuessWord = listWord[mot];
-            wordDisplay = new string('*', GuessWord.Length).ToCharArray();
+            wordDisplay = new string('_', GuessWord.Length).ToCharArray();
             UpdateMotAffiche();
             TB_display_Vie.Text = "vie : " + vie.ToString();
-
-            foreach (Button btn in FindVisualChildren<Button>(this))
-            {
-                btn.IsEnabled = true;
-            }
+            Uri ressource = new Uri("Ressource/Img/7.png", UriKind.Relative);
+            Img_Pendu.Source = new BitmapImage(ressource);
+            AllElementButton();
+            MediaPlayer playMedia = new MediaPlayer();
+            var uri = new Uri("Ressource/Sound/StartUpGame.mp3", UriKind.Relative);
         }
 
         public void Windows_Loaded(object sender, RoutedEventArgs e)
@@ -73,17 +76,20 @@ namespace ReymondNolanHangman
             else {
                 vie--;
                 TB_display_Vie.Text = "vie : " + vie.ToString();
+               // Ressource/Img/1.png
+                Uri ressource = new Uri("Ressource/Img/" + vie + ".png", UriKind.Relative);
+                Img_Pendu.Source = new BitmapImage(ressource);
                 if (vie == 0) {
                     MessageBox.Show("Perdu! Le mot était : " + GuessWord);
                     StartUpGame();
                     return;
                 }
             }
-           UpdateMotAffiche() ;
+            UpdateMotAffiche();
             if (new string(wordDisplay) == GuessWord)
             {
                 MessageBox.Show("Gagné");
-                StartUpGame() ;
+                StartUpGame();
             }
         }
 
@@ -92,22 +98,13 @@ namespace ReymondNolanHangman
             TB_display.Text = new string(wordDisplay);
         }
 
-        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        private void AllElementButton()
         {
-            if (depObj != null)
+            foreach (UIElement element in grdi_Keypad.Children)
             {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                if (element is Button btn)
                 {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
-
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
-                    {
-                        yield return childOfChild;
-                    }
+                    btn.IsEnabled = true;
                 }
             }
         }

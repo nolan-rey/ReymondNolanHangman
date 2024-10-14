@@ -94,5 +94,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressource\mot-Hangman.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressource\Img\7.png" />
+    <Resource Include="Ressource\Img\6.png" />
+    <Resource Include="Ressource\Img\5.png" />
+    <Resource Include="Ressource\Img\4.png" />
+    <Resource Include="Ressource\Img\3.png" />
+    <Resource Include="Ressource\Img\2.png" />
+    <Resource Include="Ressource\Img\1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
