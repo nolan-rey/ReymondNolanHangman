@@ -32,29 +32,39 @@ namespace ReymondNolanHangman
             StartUpGame();
         }
 
+        // initialisation des variables
+
         int vie = 7;
         int score = 0;
         string GuessWord;
         char[] wordDisplay;
 
+        // initialisation du jeu
 
         public void StartUpGame()
         {
+            // initialisation des variables
             vie = 7;
             timeLeft = 60;
-            List<string> listWord = File.ReadAllLines("../../Ressource/mot-Hangman.txt").ToList();
 
+            // lecture du fichier mot-Hangman.txt
+            List<string> listWord = File.ReadAllLines("../../Ressource/mot-Hangman.txt").ToList();
             Random random = new Random();
+
+            // selection d'un mot aléatoire
             int mot = random.Next(0, listWord.Count);
             GuessWord = listWord[mot];
             wordDisplay = new string('_', GuessWord.Length).ToCharArray();
             UpdateMotAffiche();
+
+            // affichage des variables
             TB_display_Vie.Text = "vie : " + vie.ToString();
             TB_display_Score.Text = "score : " + score.ToString();
             Uri ressource = new Uri("Ressource/Img/7.png", UriKind.Relative);
             Img_Pendu.Source = new BitmapImage(ressource);
             AllElementButton();
 
+            // timer
             if (timer != null)
             {
                 timer.Stop();
@@ -66,6 +76,7 @@ namespace ReymondNolanHangman
             timer.Start();
         }
 
+        // fonction timer
         private void timer_Tick(object sender, EventArgs e)
         {
             if (timeLeft > 0)
@@ -81,21 +92,29 @@ namespace ReymondNolanHangman
             }
         }
 
+
+        // demarrer le jeu au chargement de la fenetre
         public void Windows_Loaded(object sender, RoutedEventArgs e)
         {
             StartUpGame();
         }
 
+
+        // fonction click sur les boutons
         private void BTN_Click(object sender, RoutedEventArgs e)
         {
+            // son
             MediaPlayer playMedia = new MediaPlayer();
             var uri = new Uri("../../Ressource/sound-btn.mp3", UriKind.Relative);
             playMedia.Open(uri);
             playMedia.Play();
+
+            // recuperation du bouton cliqué    
             Button btn = sender as Button;
             String btnContent = btn.Content.ToString().ToLower();
             btn.IsEnabled = false;
 
+            // verification si le mot contient la lettre
             if (GuessWord.Contains(btnContent))
             {
                 for (int i = 0; i < GuessWord.Length; i++)
@@ -107,9 +126,9 @@ namespace ReymondNolanHangman
                 }
             }
             else {
+                // si le mot ne contient pas la lettre
                 vie--;
                 TB_display_Vie.Text = "vie : " + vie.ToString();
-               // Ressource/Img/1.png
                 Uri ressource = new Uri("Ressource/Img/" + vie + ".png", UriKind.Relative);
                 Img_Pendu.Source = new BitmapImage(ressource);
                 if (vie == 0) {
@@ -120,6 +139,7 @@ namespace ReymondNolanHangman
                 }
             }
             UpdateMotAffiche();
+            // verification si le mot est trouvé
             if (new string(wordDisplay) == GuessWord)
             {
                 timer.Stop();
@@ -129,11 +149,13 @@ namespace ReymondNolanHangman
             }
         }
 
+        // fonction pour mettre à jour le mot affiché
         private void UpdateMotAffiche()
         {
             TB_display.Text = new string(wordDisplay);
         }
 
+        // fonction pour activer tous les boutons
         private void AllElementButton()
         {
             foreach (UIElement element in grdi_Keypad.Children)
